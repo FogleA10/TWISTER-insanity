@@ -41,7 +41,7 @@ const getForecast = (lat, lon) => {
                 let windSpeed =data.current.wind_speed;
                 let UV = data.current.uvi;
                 todayHumidity.innerHTML = "Humidity: " + humidity + "%";
-                todayWindSpeed.innerHTML = "Wind Speed: " + Math.round(windSpeed) + "mi/h";
+                todayWindSpeed.innerHTML = "Wind Speed: " + Math.round(windSpeed) + " mi/h";
                 todayUV.innerHTML = "UV index: " + UV;
 
 
@@ -51,15 +51,19 @@ for (let index = 1; index < 6; index++) {
     let forecastIcon = document.getElementById("forecast-icon-" + index);
     let icon = data.daily[index].weather[0].icon;
     forecastIcon.src = 'http://openweathermap.org/img/wn/' + icon + ".png";
+    let forecastDate = document.getElementById("forecast-date-" + index);
     let forecastTemperature = document.getElementById("forecast-temperature-" + index);
+
      let forecastHumidity = document.getElementById("forecast-humidity-" + index);
                 let forecastWindSpeed = document.getElementById("forecast-wind-speed-" + index);
+                let date = data.daily[index].dt;
+                forecastDate.innerHTML= (new Date(date*1000)).toDateString();
                 let temp = data.daily[index].temp.max;
                 forecastTemperature.innerHTML = "High Temp: " + Math.round(temp) + "°F";
                 let humidity = data.daily[index].humidity;
                 let windSpeed =data.daily[index].wind_speed;
                 forecastHumidity.innerHTML = "Humidity: " + humidity + "%";
-                forecastWindSpeed.innerHTML = "Wind Speed: " + Math.round(windSpeed) + "mi/h";
+                forecastWindSpeed.innerHTML = "Wind Speed: " + Math.round(windSpeed) + " mi/h";
 //same as 
 }
 

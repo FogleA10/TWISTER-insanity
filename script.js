@@ -25,6 +25,7 @@ const getForecast = (lat, lon) => {
     })
     .then((data) => {
       console.log(data);
+      document.querySelector("#weather").style.visibility = "visible"
       document.querySelector("#todays-forecast").textContent =
         data.current.weather[0].description;
       let todayIcon = document.getElementById("today-icon");

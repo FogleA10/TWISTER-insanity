@@ -30,17 +30,36 @@ const getForecast = (lat, lon) => {
       document.querySelector("#todays-forecast").textContent = data.current.weather[0].description
       let todayIcon = document.getElementById("today-icon");
       let todayTemperature = document.getElementById("today-temperature");
-     
+     let todayHumidity = document.getElementById("today-humidity");
+                let todayWindSpeed = document.getElementById("today-wind-speed");
+                let todayUV =document.getElementById("today-UV");
                 let icon = data.current.weather[0].icon;
                 todayIcon.src = 'http://openweathermap.org/img/wn/' + icon + ".png";
                 let temp = data.current.temp;
-                todayTemperature.innerHTML = Math.round(temp) + "°F";
+                todayTemperature.innerHTML = "Current Temp: " + Math.round(temp) + "°F";
+                let humidity = data.current.humidity;
+                let windSpeed =data.current.wind_speed;
+                let UV = data.current.uvi;
+                todayHumidity.innerHTML = "Humidity: " + humidity + "%";
+                todayWindSpeed.innerHTML = "Wind Speed: " + Math.round(windSpeed) + "mi/h";
+                todayUV.innerHTML = "UV index: " + UV;
+
+
 //looping through forecast days
 
 for (let index = 1; index < 6; index++) {
     let forecastIcon = document.getElementById("forecast-icon-" + index);
     let icon = data.daily[index].weather[0].icon;
     forecastIcon.src = 'http://openweathermap.org/img/wn/' + icon + ".png";
+    let forecastTemperature = document.getElementById("forecast-temperature-" + index);
+     let forecastHumidity = document.getElementById("forecast-humidity-" + index);
+                let forecastWindSpeed = document.getElementById("forecast-wind-speed-" + index);
+                let temp = data.daily[index].temp;
+                forecastTemperature.innerHTML = "Current Temp: " + Math.round(temp) + "°F";
+                let humidity = data.daily[index].humidity;
+                let windSpeed =data.daily[index].wind_speed;
+                forecastHumidity.innerHTML = "Humidity: " + humidity + "%";
+                forecastWindSpeed.innerHTML = "Wind Speed: " + Math.round(windSpeed) + "mi/h";
 //same as 
 }
 
